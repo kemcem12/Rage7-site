@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rage7 kişisel tanıtım sitesi.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Rage7 | Kişisel Site</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f7f7f8;
+      --text: #171717;
+      --muted: #6b7280;
+      --line: #e8e8eb;
+      --accent: #171717;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.9);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 850; font-size: 1.35rem; letter-spacing: -.06em; }
+    .brand span { color: #8b8b92; }
+    nav { display: flex; align-items: center; gap: 25px; color: #555; font-size: .92rem; }
+    nav a:hover { color: #000; }
+    .menu-button { display: none; border: 1px solid var(--line); background: white; border-radius: 10px; padding: 8px 12px; font: inherit; }
+    .hero { padding: 104px 0 92px; }
+    .eyebrow { display: inline-flex; gap: 8px; align-items: center; color: var(--muted); font-size: .82rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+    .dot { width: 8px; height: 8px; background: #111; border-radius: 50%; display: inline-block; }
+    h1 { max-width: 850px; margin: 20px 0; font-size: clamp(3.2rem, 8vw, 6.8rem); line-height: .98; letter-spacing: -.085em; }
+    h1 .light { color: #9b9ba1; }
+    .intro { max-width: 620px; color: #62626a; font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border: 1px solid #171717; border-radius: 999px; font-weight: 650; font-size: .94rem; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: #171717; color: white; }
+    .button.secondary { background: white; }
+    .section { padding: 76px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 30px; }
+    .kicker { color: var(--muted); font-size: .82rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -.06em; margin: 8px 0 0; }
+    .section-note { max-width: 420px; color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; }
+    .panel { background: var(--surface); border: 1px solid #f0f0f1; border-radius: 22px; padding: 28px; }
+    .panel p { color: #5d5d65; margin-bottom: 0; }
+    .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .stat { padding: 22px; border: 1px solid var(--line); border-radius: 18px; }
+    .stat strong { display: block; font-size: 1.55rem; letter-spacing: -.05em; }
+    .stat span { color: var(--muted); font-size: .88rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { border: 1px solid var(--line); border-radius: 20px; padding: 24px; min-height: 210px; display: flex; flex-direction: column; }
+    .card-number { color: #999; font-size: .82rem; }
+    .card h3 { margin: 24px 0 8px; font-size: 1.2rem; letter-spacing: -.035em; }
+    .card p { color: var(--muted); margin: 0; font-size: .95rem; }
+    .tag { display: inline-block; margin-top: auto; padding-top: 24px; color: #777; font-size: .78rem; }
+    .contact { background: #f8f8f8; border: 1px solid #eee; border-radius: 26px; padding: clamp(28px, 6vw, 54px); display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .contact p { color: var(--muted); max-width: 500px; }
+    footer { padding: 28px 0; color: var(--muted); font-size: .88rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .hero { padding: 76px 0 66px; }
+      .section { padding: 58px 0; }
+      .section-head { display: block; }
+      .section-note { margin-top: 14px; }
+      .about-grid, .cards { grid-template-columns: 1fr; }
+      .contact { display: block; }
+      .contact .button { margin-top: 12px; }
+      nav { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; padding: 20px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; }
+      nav.open { display: flex; }
+      .menu-button { display: inline-flex; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#anasayfa" aria-label="Rage7 ana sayfa">Rage<span>7.</span></a>
+      <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="navLinks">Menü ☰</button>
+      <nav id="navLinks" aria-label="Ana menü">
+        <a href="#hakkimda">Hakkımda</a>
+        <a href="#alanlar">İlgi Alanları</a>
+        <a href="#projeler">Projeler</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="anasayfa">
+      <div class="eyebrow"><span class="dot"></span> KİŞİSEL PORTFOLYO</div>
+      <h1>Merhaba, ben <span class="light">Rage7.</span><br>Buraya hoş geldin.</h1>
+      <p class="intro">Dijital dünyaya, yeni fikirlere ve üretmeye meraklıyım. Burası beni, ilgi alanlarımı ve üzerinde çalıştığım işleri keşfedebileceğin kişisel alanım.</p>
+      <div class="actions">
+        <a class="button primary" href="#projeler">Projelerimi keşfet ↗</a>
+        <a class="button secondary" href="#iletisim">Benimle iletişime geç</a>
+      </div>
+    </section>
+
+    <section class="section" id="hakkimda">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">01 / Hakkımda</div><h2>Kısaca ben.</h2></div>
+          <p class="section-note">Bu alanı kendi hikâyen, hedeflerin ve seni anlatan bilgilerle kişiselleştirebilirsin.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <h3>Merak ederek öğreniyorum.</h3>
+            <p>Yeni şeyler denemeyi, dijital projeler geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Her proje benim için yeni bir deneyim ve gelişmek için bir fırsat.</p>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><strong>01</strong><span>Öğrenmeye açık</span></div>
+            <div class="stat"><strong>7/24</strong><span>Yeni fikirler</span></div>
+            <div class="stat"><strong>∞</strong><span>Gelişim alanı</span></div>
+            <div class="stat"><strong>R7</strong><span>Kişisel marka</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="alanlar">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">02 / İlgi alanları</div><h2>Nelerle ilgileniyorum?</h2></div>
+          <p class="section-note">Kartlardaki başlıkları kendi ilgi alanlarına göre değiştirebilirsin.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><span class="card-number">01 —</span><h3>Oyun & Espor</h3><p>Oyun kültürü, takım ruhu ve rekabetçi dünyadan ilham alıyorum.</p><span class="tag">GAMING / ESPORTS</span></article>
+          <article class="card"><span class="card-number">02 —</span><h3>Teknoloji</h3><p>Kodlama öğrenmek, dijital araçları keşfetmek ve yeni şeyler üretmek.</p><span class="tag">TECH / LEARNING</span></article>
+          <article class="card"><span class="card-number">03 —</span><h3>Tasarım</h3><p>Sade, temiz ve akılda kalıcı görseller ile dijital deneyimler.</p><span class="tag">DESIGN / CREATIVE</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projeler">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">03 / Projeler</div><h2>Üzerinde çalıştıklarım.</h2></div>
+          <p class="section-note">Buraya tamamladığın projeleri, bağlantılarını ve kısa açıklamalarını ekleyebilirsin.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><span class="card-number">PROJE 01</span><h3>Kişisel Web Sitesi</h3><p>Rage7 için sade ve mobil uyumlu kişisel tanıtım sayfası.</p><span class="tag">BU SİTE</span></article>
+          <article class="card"><span class="card-number">PROJE 02</span><h3>Yakında</h3><p>Yeni fikirler ve geliştirmekte olduğum çalışmalar burada yer alacak.</p><span class="tag">COMING SOON</span></article>
+          <article class="card"><span class="card-number">PROJE 03</span><h3>Senin projen</h3><p>Bu kartı kendi projenin adı, görseli ve bağlantısıyla değiştirebilirsin.</p><span class="tag">IN PROGRESS</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="iletisim">
+      <div class="wrap">
+        <div class="contact">
+          <div><div class="kicker">04 / İletişim</div><h2>Bir şey mi konuşalım?</h2><p>Sosyal medya veya e-posta bağlantılarını ekleyerek ziyaretçilerin sana ulaşmasını sağlayabilirsin.</p></div>
+          <a class="button primary" href="mailto:hello@rage7.example">E-posta gönder ↗</a>
+        </div>
+        <p style="color:#8a8a91;font-size:.82rem;margin-top:12px;">Not: E-posta bağlantısı örnek olarak eklenmiştir. Yayınlamadan önce kendi e-posta adresinle değiştir.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year"></span> Rage7. Tüm hakları saklıdır.</span>
+      <a href="#anasayfa">Başa dön ↑</a>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+    menuButton.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(open));
+    });
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+</body>
+</html>
